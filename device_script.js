@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // メニューボタンをクリックしたらメニューを開閉する
-    menuToggle.addEventListener("click", toggleMenu);
+    menuToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleMenu();
+    });
 
     // メニューの外側をクリックしたらメニューを閉じる
     document.addEventListener("click", (event) => {
@@ -19,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // メニュー上にマウスがある間、メニューを開いたままにする
-    dropdownMenu.addEventListener("mouseenter", toggleMenu);
+    dropdownMenu.addEventListener("mouseenter", () => {
+        dropdownMenu.classList.add("show");
+    });
 
     // メニューからマウスが外れたら、メニューを閉じる
     dropdownMenu.addEventListener("mouseleave", () => {
